@@ -1,0 +1,250 @@
+{
+  "repository": "rodrigolinhas/world-traveler",
+  "labels": [
+    {
+      "name": "type:feature",
+      "color": "1D76DB",
+      "description": "Product or engineering functionality"
+    },
+    {
+      "name": "type:docs",
+      "color": "0075CA",
+      "description": "Documentation and conventions"
+    },
+    {
+      "name": "type:chore",
+      "color": "6A737D",
+      "description": "Tooling and repository maintenance"
+    },
+    {
+      "name": "area:web",
+      "color": "5319E7",
+      "description": "Next.js frontend and globe"
+    },
+    {
+      "name": "area:api",
+      "color": "0052CC",
+      "description": "Go backend and HTTP contracts"
+    },
+    {
+      "name": "area:data",
+      "color": "0E8A16",
+      "description": "Database, geography and datasets"
+    },
+    {
+      "name": "area:infra",
+      "color": "D4C5F9",
+      "description": "Development environment and CI"
+    }
+  ],
+  "milestones": [
+    {
+      "key": "M0",
+      "title": "M0 — Engineering Foundation",
+      "description": "Reproducible web/API/PostgreSQL/PostGIS/CI repository before production features."
+    },
+    {
+      "key": "M1",
+      "title": "M1 — World Explorer",
+      "description": "Interactive globe → country selection → real canonical profile from Go and PostgreSQL. Authentication follows in M3."
+    }
+  ],
+  "issues": [
+    {
+      "key": "M0-01",
+      "title": "Establish repository structure and engineering conventions",
+      "milestone": "M0",
+      "labels": [
+        "type:docs"
+      ],
+      "depends_on": [],
+      "body": "## Outcome\n\nMake the baseline understandable before implementation.\n\n## Acceptance criteria\n\n- [ ] README, AGENTS, CONTRIBUTING and SECURITY describe current status and permanent rules.\n- [ ] Product/architecture docs cover scope, data classes, non-goals and milestones.\n- [ ] Document target directories without speculative empty scaffolding.\n- [ ] Document scoped branches/PRs, Conventional Commits and definition of done.\n- [ ] Local links resolve; proposed capabilities are not described as implemented.\n\n## Dependencies\n\nNone.\n\n## References\n\n- `docs/product/specification-v0.1.md`\n- `CONTRIBUTING.md`\n- `AGENTS.md`\n\n**Phase:** M0. **Baseline:** World Observatory v0.1. Proposed labels: type:docs.\n"
+    },
+    {
+      "key": "M0-02",
+      "title": "Bootstrap Next.js web application",
+      "milestone": "M0",
+      "labels": [
+        "type:chore",
+        "area:web"
+      ],
+      "depends_on": [
+        "M0-01"
+      ],
+      "body": "## Outcome\n\nEstablish a reproducible TypeScript frontend.\n\n## Acceptance criteria\n\n- [ ] Create apps/web with verified compatible Next.js/React/TypeScript versions and one committed lockfile.\n- [ ] Add only used baseline dependencies; no authentication/globe/future feature scaffolding.\n- [ ] Document exact install/dev/lint/typecheck/build commands and runtime version.\n- [ ] Provide an accessible baseline page and suitable security headers.\n- [ ] Clean install and configured lint/typecheck/build pass.\n\n## Dependencies\n\nM0-01\n\n## References\n\n- `docs/architecture/frontend.md`\n- `docs/architecture/deployment.md`\n\n**Phase:** M0. **Baseline:** World Observatory v0.1. Proposed labels: type:chore, area:web.\n"
+    },
+    {
+      "key": "M0-03",
+      "title": "Bootstrap Go HTTP API with health endpoint",
+      "milestone": "M0",
+      "labels": [
+        "type:chore",
+        "area:api"
+      ],
+      "depends_on": [
+        "M0-01"
+      ],
+      "body": "## Outcome\n\nRun Go/Chi with a documented health response.\n\n## Acceptance criteria\n\n- [ ] Create api/cmd/server with Chi/slog; verify and pin Go 1.27+ target or explicitly document its resolution.\n- [ ] Implement GET /api/v1/healthz with defined response; explain liveness versus database readiness.\n- [ ] Add finite HTTP timeouts, graceful shutdown and request IDs without secret logging.\n- [ ] Validate configuration and document startup commands.\n- [ ] An httptest check verifies the response; format/vet/tests/build pass.\n\n## Dependencies\n\nM0-01\n\n## References\n\n- `docs/architecture/backend.md`\n- `docs/architecture/api.md`\n\n**Phase:** M0. **Baseline:** World Observatory v0.1. Proposed labels: type:chore, area:api.\n"
+    },
+    {
+      "key": "M0-04",
+      "title": "Add PostgreSQL + PostGIS local development environment",
+      "milestone": "M0",
+      "labels": [
+        "type:chore",
+        "area:infra",
+        "area:data"
+      ],
+      "depends_on": [
+        "M0-01"
+      ],
+      "body": "## Outcome\n\nProvide reproducible development database startup.\n\n## Acceptance criteria\n\n- [ ] Add infra/compose.yaml with a verified pinned compatible PostgreSQL/PostGIS image.\n- [ ] Provide persistent development storage and database health checks.\n- [ ] Use placeholder example configuration; real credentials remain untracked.\n- [ ] Document startup/shutdown, connection settings and explicit data-reset warnings.\n- [ ] Verify fresh startup, database connection and PostGIS extension availability.\n\n## Dependencies\n\nM0-01\n\n## References\n\n- `docs/architecture/database.md`\n- `docs/architecture/deployment.md`\n\n**Phase:** M0. **Baseline:** World Observatory v0.1. Proposed labels: type:chore, area:infra, area:data.\n"
+    },
+    {
+      "key": "M0-05",
+      "title": "Establish golang-migrate and sqlc workflow",
+      "milestone": "M0",
+      "labels": [
+        "type:chore",
+        "area:api",
+        "area:data"
+      ],
+      "depends_on": [
+        "M0-03",
+        "M0-04"
+      ],
+      "body": "## Outcome\n\nMake schema changes and generated database access repeatable.\n\n## Acceptance criteria\n\n- [ ] Configure db/migrations and db/queries with verified pinned golang-migrate/sqlc tooling.\n- [ ] Provide minimal initial migration and required extension setup.\n- [ ] Document clean up/down, generation commands and generated-file policy.\n- [ ] Verify fresh migration and regeneration without generated drift.\n- [ ] Do not add visits/trips/provider schemas before their slices.\n\n## Dependencies\n\nM0-03, M0-04\n\n## References\n\n- `docs/architecture/database.md`\n\n**Phase:** M0. **Baseline:** World Observatory v0.1. Proposed labels: type:chore, area:api, area:data.\n"
+    },
+    {
+      "key": "M0-06",
+      "title": "Define initial OpenAPI contract",
+      "milestone": "M0",
+      "labels": [
+        "type:chore",
+        "area:api",
+        "area:web"
+      ],
+      "depends_on": [
+        "M0-02",
+        "M0-03"
+      ],
+      "body": "## Outcome\n\nEstablish the canonical health contract and deterministic frontend types.\n\n## Acceptance criteria\n\n- [ ] Add openapi/openapi.yaml using OpenAPI 3.1 matching implemented health/error responses.\n- [ ] Configure contract validation and deterministic generated TypeScript types/client.\n- [ ] Document regeneration, committed-file and drift-check policy.\n- [ ] Generated output compiles and matches API behaviour.\n- [ ] Do not describe future endpoints as implemented.\n\n## Dependencies\n\nM0-02, M0-03\n\n## References\n\n- `docs/architecture/api.md`\n\n**Phase:** M0. **Baseline:** World Observatory v0.1. Proposed labels: type:chore, area:api, area:web.\n"
+    },
+    {
+      "key": "M0-07",
+      "title": "Establish canonical country seed/import strategy",
+      "milestone": "M0",
+      "labels": [
+        "type:docs",
+        "area:data"
+      ],
+      "depends_on": [
+        "M0-01"
+      ],
+      "body": "## Outcome\n\nChoose a sourced, reproducible catalogue strategy.\n\n## Acceptance criteria\n\n- [ ] Review official sources; record dated licence, attribution, coverage and redistribution requirements.\n- [ ] Define stable identities/ISO mapping and a separately sourced 195-country challenge collection.\n- [ ] Document territory/disputed-boundary exceptions and map-feature join strategy.\n- [ ] Define canonical fields, refresh cadence and idempotent/transactional import policy.\n- [ ] Record fixture/download provenance and M1 validation checks without inventing facts.\n\n## Dependencies\n\nM0-01\n\n## References\n\n- `docs/data-sources/README.md`\n- `docs/product/geographic-model.md`\n\n**Phase:** M0. **Baseline:** World Observatory v0.1. Proposed labels: type:docs, area:data.\n"
+    },
+    {
+      "key": "M0-08",
+      "title": "Add CI baseline for frontend and backend",
+      "milestone": "M0",
+      "labels": [
+        "type:chore",
+        "area:infra"
+      ],
+      "depends_on": [
+        "M0-02",
+        "M0-03",
+        "M0-05",
+        "M0-06"
+      ],
+      "body": "## Outcome\n\nRun actionable reproducibility and security checks.\n\n## Acceptance criteria\n\n- [ ] Use minimal workflow permissions and verified pinned tooling/runtime versions.\n- [ ] Run Go format/vet/static checks/tests/build and race detector where practical.\n- [ ] Run configured frontend lint/typecheck/tests/build.\n- [ ] Validate OpenAPI/generated drift and migration/sqlc consistency as applicable.\n- [ ] Add actionable govulncheck, frontend dependency audit and secret scanning.\n- [ ] Document local equivalents; tests never rely on live providers.\n\n## Dependencies\n\nM0-02, M0-03, M0-05, M0-06\n\n## References\n\n- `docs/architecture/testing.md`\n- `docs/security/baseline.md`\n\n**Phase:** M0. **Baseline:** World Observatory v0.1. Proposed labels: type:chore, area:infra.\n"
+    },
+    {
+      "key": "M0-09",
+      "title": "Add initial architecture documentation and ADRs",
+      "milestone": "M0",
+      "labels": [
+        "type:docs"
+      ],
+      "depends_on": [
+        "M0-01"
+      ],
+      "body": "## Outcome\n\nRecord why significant architectural choices belong here.\n\n## Acceptance criteria\n\n- [ ] Create ADR-001 through ADR-009 with context, decisions, alternatives and consequences.\n- [ ] Cover monolith, Go, Next.js, PostgreSQL/PostGIS, MapLibre, adapters, provenance/freshness, limited infrastructure and versioned editorial data.\n- [ ] Document backend/frontend/database/geography/providers/caching/provenance/deployment boundaries.\n- [ ] Distinguish accepted direction from completed implementation.\n- [ ] Document supersession and check cross-document consistency.\n\n## Dependencies\n\nM0-01\n\n## References\n\n- `docs/architecture/overview.md`\n- `docs/adr/README.md`\n\n**Phase:** M0. **Baseline:** World Observatory v0.1. Proposed labels: type:docs.\n"
+    },
+    {
+      "key": "M1-01",
+      "title": "Import canonical country catalogue into PostgreSQL",
+      "milestone": "M1",
+      "labels": [
+        "type:feature",
+        "area:data"
+      ],
+      "depends_on": [
+        "M0-05",
+        "M0-07",
+        "M0-08"
+      ],
+      "body": "## Outcome\n\nStore real profiles locally with reproducible imports.\n\n## Acceptance criteria\n\n- [ ] Add country migration/schema/constraints from the reviewed M0 strategy.\n- [ ] Implement idempotent sync/seed with source, retrieval/version and attribution.\n- [ ] Keep catalogue/territories distinct from 195-country collection membership.\n- [ ] Persist real panel fields including Portugal/Lisbon/EUR/Portuguese/Europe.\n- [ ] Fixture and database checks cover repeated imports and invalid data.\n- [ ] Document exact import/verification commands.\n\n## Dependencies\n\nM0-05, M0-07, M0-08\n\n## References\n\n- `docs/architecture/database.md`\n- `docs/data-sources/README.md`\n\n**Phase:** M1. **Baseline:** World Observatory v0.1. Proposed labels: type:feature, area:data.\n"
+    },
+    {
+      "key": "M1-02",
+      "title": "Expose canonical country list and profile endpoints",
+      "milestone": "M1",
+      "labels": [
+        "type:feature",
+        "area:api"
+      ],
+      "depends_on": [
+        "M1-01",
+        "M0-06"
+      ],
+      "body": "## Outcome\n\nRead country profiles from PostgreSQL through the world module.\n\n## Acceptance criteria\n\n- [ ] Implement GET /api/v1/countries and /api/v1/countries/{iso2} with defined fields, excluding large polygons.\n- [ ] Define identifier normalization and malformed/unknown-code error responses.\n- [ ] Update OpenAPI and regenerate frontend types.\n- [ ] Use parameterized SQL/sqlc and request contexts.\n- [ ] HTTP/real-database checks prove PT lookup and invalid/unknown handling.\n- [ ] No external provider is required in the request path.\n\n## Dependencies\n\nM1-01, M0-06\n\n## References\n\n- `docs/architecture/api.md`\n- `docs/architecture/backend.md`\n\n**Phase:** M1. **Baseline:** World Observatory v0.1. Proposed labels: type:feature, area:api.\n"
+    },
+    {
+      "key": "M1-03",
+      "title": "Build interactive MapLibre globe with country selection",
+      "milestone": "M1",
+      "labels": [
+        "type:feature",
+        "area:web",
+        "area:data"
+      ],
+      "depends_on": [
+        "M0-02",
+        "M0-07",
+        "M1-02"
+      ],
+      "body": "## Outcome\n\nMake Earth functional navigation with stable selection.\n\n## Acceptance criteria\n\n- [ ] Use verified globe-capable MapLibre and reviewed optimized map data with attribution.\n- [ ] Deliver map datasets/tiles separately from profile API payloads.\n- [ ] Resolve supported polygons including PT to stable identifiers; handle mapping exceptions.\n- [ ] Provide accessible keyboard/search/list selection and responsive layout.\n- [ ] URL parameters preserve Explore layer/country, direct links and browser navigation.\n- [ ] Handle map loading/failure visibly; do not add unimplemented thematic layers.\n\n## Dependencies\n\nM0-02, M0-07, M1-02\n\n## References\n\n- `docs/architecture/frontend.md`\n- `docs/architecture/geography.md`\n\n**Phase:** M1. **Baseline:** World Observatory v0.1. Proposed labels: type:feature, area:web, area:data.\n"
+    },
+    {
+      "key": "M1-04",
+      "title": "Connect country selection to a real country information panel",
+      "milestone": "M1",
+      "labels": [
+        "type:feature",
+        "area:web"
+      ],
+      "depends_on": [
+        "M1-02",
+        "M1-03"
+      ],
+      "body": "## Outcome\n\nDisplay API-backed information for the selected country.\n\n## Acceptance criteria\n\n- [ ] Use generated contract types and appropriate server-state handling for the internal API.\n- [ ] Selecting PT shows Portugal, Lisbon, EUR, Portuguese and Europe from API data.\n- [ ] Cover loading, empty/unknown, error/retry states and suitable focus behaviour.\n- [ ] Closing/changing selection updates URL and works on mobile.\n- [ ] Component checks cover success/errors without hardcoded profiles or frontend provider calls.\n\n## Dependencies\n\nM1-02, M1-03\n\n## References\n\n- `docs/architecture/frontend.md`\n- `docs/product/country-intelligence.md`\n\n**Phase:** M1. **Baseline:** World Observatory v0.1. Proposed labels: type:feature, area:web.\n"
+    },
+    {
+      "key": "M1-05",
+      "title": "Verify the globe-to-country vertical slice end to end",
+      "milestone": "M1",
+      "labels": [
+        "type:chore",
+        "area:infra",
+        "area:web",
+        "area:api"
+      ],
+      "depends_on": [
+        "M1-04",
+        "M0-08"
+      ],
+      "body": "## Outcome\n\nProve actual web → Go → PostgreSQL selection reproducibly.\n\n## Acceptance criteria\n\n- [ ] Run against migrated/seeded PostgreSQL and actual Go API rather than replacement country data.\n- [ ] Playwright proves selection and the visible Portugal panel.\n- [ ] Verify direct URLs/navigation, accessible selection and meaningful API failure state.\n- [ ] Document clean startup/test commands and run the workflow in CI.\n- [ ] Use deterministic test data/map fixtures; do not depend on live intelligence providers.\n- [ ] Record responsive/accessibility and deployment-path limitations before declaring M1 complete.\n\n## Dependencies\n\nM1-04, M0-08\n\n## References\n\n- `docs/architecture/testing.md`\n- `docs/architecture/deployment.md`\n\n**Phase:** M1. **Baseline:** World Observatory v0.1. Proposed labels: type:chore, area:infra, area:web, area:api.\n"
+    }
+  ]
+}
