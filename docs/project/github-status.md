@@ -4,7 +4,9 @@
 
 Published 9 M0 and 5 M1 issues. All remain open; documentation review/merge and implementation are still required. No assignees or dates were set. Dependencies link to the corresponding issues.
 
-Labels and milestones are defined in [github-backlog.json](github-backlog.json), but have not been created or assigned by this session: the connected tools do not expose their creation and the GitHub CLI is unavailable. Issue bodies carry intended phase and proposed labels. This is not completed remote milestone/label setup.
+The 7 type/area labels in [github-backlog.json](github-backlog.json) are created and applied to all 14 existing issues. [M0 — Engineering Foundation](https://github.com/rodrigolinhas/world-traveler/milestone/1) contains issues #1–#9; [M1 — World Explorer](https://github.com/rodrigolinhas/world-traveler/milestone/2) contains #10–#14. Existing labels were preserved. Assignments were verified through the authenticated GitHub CLI.
+
+The repository now has a product description and relevant technology/domain topics. Private vulnerability reporting, secret scanning and secret-scanning push protection are enabled and verified. Issue and pull request templates are prepared locally under `.github`; they become available on GitHub after those files are committed and pushed to the default branch.
 
 | Local key | GitHub issue |
 | --- | --- |

@@ -8,4 +8,4 @@ Personal resource operations enforce ownership. Logs and errors must not expose 
 
 M0 CI establishes actionable secret/dependency scanning; regular dependency updates continue thereafter. M6 validates deployment security, backup/restore, review procedures and production operation. Public user content later requires visibility, moderation and abuse handling alongside its release.
 
-See [SECURITY.md](../../SECURITY.md) for the reporting path and its current availability limitation.
+GitHub private vulnerability reporting, secret scanning and push protection were enabled and verified on 2026-10-07. These repository settings complement, rather than complete, the planned CI checks. See [SECURITY.md](../../SECURITY.md) for the reporting path.

@@ -4,9 +4,9 @@ There is no released application or supported production version yet. Security r
 
 ## Reporting a vulnerability
 
-Use the repository's private vulnerability reporting option if enabled: https://github.com/rodrigolinhas/world-traveler/security/advisories/new.
+Use the repository's private vulnerability reporting option: https://github.com/rodrigolinhas/world-traveler/security/advisories/new.
 
-Private reporting availability has not been verified. If the option is unavailable, ask the maintainer to enable a private reporting channel without disclosing exploit details. Do not put credentials, private user data or exploit details in public issues. No response-time commitment is established yet.
+Private reporting was enabled and verified on 2026-10-07. If the option becomes unavailable, ask the maintainer for a private reporting channel without disclosing exploit details. Do not put credentials, private user data or exploit details in public issues. No response-time commitment is established yet.
 
 ## Engineering requirements
 
@@ -16,4 +16,4 @@ Use Argon2id passwords and server-side sessions with random tokens stored as has
 
 Apply appropriate security headers, request/provider deadlines and justified rate limits. Logs must exclude credentials, tokens and sensitive profile information. Collect only personal data required for a current feature; initial functionality does not need passport scans/numbers or continuous location history.
 
-M0 must establish actionable dependency and secret scanning. Authentication-specific controls arrive with M3, before authentication is exposed. See [security baseline](docs/security/baseline.md).
+GitHub secret scanning and push protection are enabled. M0 must still establish actionable dependency and CI secret scanning. Authentication-specific controls arrive with M3, before authentication is exposed. See [security baseline](docs/security/baseline.md).

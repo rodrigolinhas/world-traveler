@@ -44,7 +44,7 @@ M0-01 and M0-09 can be completed by review of this baseline once committed throu
 
 ## GitHub setup
 
-The connected GitHub tools can publish issues but do not expose label/milestone creation. The CLI is not installed. Definitions above are ready for GitHub UI or authenticated CLI; [GitHub status](github-status.md) tracks publication results.
+The authenticated GitHub CLI is available. Labels and M0/M1 milestones have been created and associated with the existing issues; [GitHub status](github-status.md) records the remote organization.
 
 Inspect existing labels/milestones/issues first and reuse matches. Create missing labels with defined names/colours/descriptions; create/reuse M0 and M1 milestones; associate published issues with their phase and labels. The status mapping prevents duplicates. Preserve unrelated objects and assign no owners without agreement.
 

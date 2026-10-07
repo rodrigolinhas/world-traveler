@@ -8,7 +8,7 @@ Finish M0 before production feature code. Then prioritize the M1 globe → count
 
 ## Pull requests
 
-Explain the concrete problem and resulting behaviour, link the issue, and describe relevant validation and limitations. Include API contracts, migrations, attribution and documentation when affected. Never include secrets or unrelated local artefacts.
+Use the pull request template to explain the concrete problem and resulting behaviour, link the issue, and describe relevant validation and limitations. Include API contracts, migrations, attribution and documentation when affected. Never include secrets or unrelated local artefacts. Issue templates provide focused bug reports and feature proposals; apply the appropriate type/area labels and milestone.
 
 ## Definition of done
 
